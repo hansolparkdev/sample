@@ -1,6 +1,6 @@
 // import { Helmet } from 'react-helmet';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-
+import { useEffect  } from 'react';
 
 type Props = {
   description?: string;
@@ -8,8 +8,11 @@ type Props = {
   title?: string;
 };
 
-const PageContainer = ({ title, description, children }: Props) => (
-  <HelmetProvider>
+const PageContainer = ({ title, description, children }: Props) => {
+  useEffect(() => {
+    console.log('csr')
+  }, [])
+  return (<HelmetProvider>
     <div>
       <Helmet>
         <title>{title}</title>
@@ -17,7 +20,7 @@ const PageContainer = ({ title, description, children }: Props) => (
       </Helmet>
       {children}
     </div>
-  </HelmetProvider>
-);
+  </HelmetProvider>)
+};
 
 export default PageContainer;

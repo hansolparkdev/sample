@@ -1,18 +1,12 @@
-'use client';
-import { Typography } from '@mui/material';
-import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
-import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
-
-
-const SamplePage = () => {
+import React from 'react'
+import ExampleClientComponent from './components/ExampleClientComponent';
+import getIntl from '@/app/intl'
+export default async function Home () {
+  const intl = await getIntl('home');
   return (
-    <PageContainer title="Sample Page" description="this is Sample page">
-      <DashboardCard title="Sample Page">
-        <Typography>This is a sample page</Typography>
-      </DashboardCard>
-    </PageContainer>
+    <main>
+      <h1>{intl.formatMessage({ id: 'homepage_header' })}</h1>
+      <ExampleClientComponent />
+    </main>
   );
-};
-
-export default SamplePage;
-
+}
