@@ -47,19 +47,27 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
       password: data.password,
       grant_type: "password",
     }
-    const response = await api.auth("/oauth/token", params);
-    console.log(response)
-    if (response?.data?.access_token) {
-        console.log("Login Success", response?.data);
-        api.setLoggedInUser(response.data.access_token, data.username);
-        setCookie('token', response?.data?.access_token)
-        setLoginUser({
-            access_token: response.data?.accessToken,
-            refresh_token: response.data?.refresh_token,
-            expires_in: response.data?.expires_in,
-            userLoggedIn: true,
-            userId: data.username,
-        });
+    // await alert
+    //   .fire({
+    //     title: "로그인",
+    //     text: "ID 또는 비밀번호가 일치하지 않습니다",
+    //     icon: "error",
+    //   })
+    // const response = await api.auth("/oauth/token", params);
+    // console.log(response)
+    // if (response?.data?.access_token) {
+    const response = true
+    if (response) {
+        // console.log("Login Success", response?.data);
+        // api.setLoggedInUser(response.data.access_token, data.username);
+        // setCookie('token', response?.data?.access_token)
+        // setLoginUser({
+        //     access_token: response.data?.accessToken,
+        //     refresh_token: response.data?.refresh_token,
+        //     expires_in: response.data?.expires_in,
+        //     userLoggedIn: true,
+        //     userId: data.username,
+        // });
         router.push('/')
         router.refresh()
     } else {
